@@ -1,0 +1,46 @@
+buildscript {
+    ext {
+        springBootVersion = '2.3.7.RELEASE'
+    }
+
+    repositories {
+        mavenLocal()
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        mavenCentral()
+    }
+    dependencies {
+        // 规定统一的依赖版本
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+// 使用springboot
+apply plugin: "org.springframework.boot"
+// 使用springboot的自动依赖管理
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.stephen.gradledemo'
+version '1.0-SNAPSHOT'
+
+// 指定java版本
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    maven {url 'https://maven.aliyun.com/repository/public'}
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+//    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'org.springframework.boot', name: 'spring-boot-devtools'
+
+}
